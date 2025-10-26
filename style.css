@@ -1,0 +1,10 @@
+
+body {
+  text-align: center;
+  background: #f4f0e1;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+canvas {
+  border: 3px solid #444;
+  background-color: #fffbe6;
+}
