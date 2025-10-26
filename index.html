@@ -1,14 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <title>守護鹿耳門聖母廟</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>守護鹿耳門聖母廟 Tower Defense v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>守護鹿耳門聖母廟</h1>
-  <canvas id="gameCanvas" width="800" height="480"></canvas>
-  <script src="main.js"></script>
+  <header>
+    <h1>守護鹿耳門聖母廟 Tower Defense v2</h1>
+    <p class="subtitle">點擊下方選單選擇陣頭，點擊地圖放置；點選已放置的塔可升級。</p>
+  </header>
+
+  <main>
+    <div id="hud">
+      <div>💰 金幣：<span id="gold">0</span></div>
+      <div>❤️ 生命：<span id="lives">0</span></div>
+      <div>🌀 波數：<span id="wave">0</span>/5</div>
+      <div>🏆 得分：<span id="score">0</span></div>
+      <button id="startBtn">▶ 開始戰鬥</button>
+      <button id="resetBtn">⟲ 重來</button>
+      <label class="mute"><input type="checkbox" id="mute"> 靜音</label>
+    </div>
+
+    <canvas id="game" width="960" height="560"></canvas>
+
+    <section id="toolbar">
+      <button class="pick" data-type="bajia">八家將（$20）</button>
+      <button class="pick" data-type="wugong">蜈蚣陣（$30）</button>
+      <button class="pick" data-type="baihe">白鶴陣（$15）</button>
+      <button class="pick" data-type="songjiang">宋江陣（$25）</button>
+      <span id="picked">目前：—</span>
+    </section>
+
+    <section id="hint">
+      <details>
+        <summary>查看陣頭說明與升級機制</summary>
+        <ul>
+          <li>八家將：中距離、中速、攻擊力中（對鬼怪 +1）。</li>
+          <li>蜈蚣陣：遠距、慢速、可穿透 2 名敵人。</li>
+          <li>白鶴陣：近距、超快、攻擊力較低，清小兵最佳。</li>
+          <li>宋江陣：中長距、均衡、高攻擊，附一次格擋護盾。</li>
+        </ul>
+        <p>升級：選取地圖上的塔（會顯示面板）→ 點擊「升攻」或「升速」。花費會逐次增加。</p>
+      </details>
+    </section>
+
+    <div id="panel" class="hidden">
+      <div id="panelTitle">—</div>
+      <div class="row">
+        <button id="upAtk">升攻（$<span id="atkCost">0</span>）</button>
+        <button id="upSpd">升速（$<span id="spdCost">0</span>）</button>
+        <button id="sell">出售（返還 70%）</button>
+      </div>
+      <div class="row small">ATK：<span id="atkVal">—</span>｜Rate：<span id="spdVal">—</span>｜Lv：<span id="lvlVal">—</span></div>
+    </div>
+
+    <div id="banner" class="hidden"></div>
+  </main>
+
+  <footer>
+    <small>離線版 · HTML5 Canvas + 原生 JS · 資源使用幾何圖形與 WebAudio 音效</small>
+  </footer>
+
+  <script src="game.js"></script>
 </body>
 </html>
