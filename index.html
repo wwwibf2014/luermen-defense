@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>守護鹿耳門聖母廟 Tower Defense v4.4</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>守護鹿耳門聖母廟　Tower Defense v4.4（特色化＋升級）</h1>
+    <div id="hud">
+      <span>💰 金幣：<b id="gold">0</b></span>
+      <span>❤️ 生命：<b id="lives">0</b></span>
+      <span>🌀 波數：<b id="wave">0</b>/<b id="waveMax">0</b></span>
+      <span>🏆 分數：<b id="score">0</b></span>
+      <span>🗺 關卡：<b id="level">1</b>/2</span>
+      <button id="pauseBtn">⏸ 暫停</button>
+      <button id="resetBtn">⟲ 重來</button>
+      <label class="mute"><input type="checkbox" id="mute" /> 靜音</label>
+    </div>
+  </header>
+
+  <main>
+    <canvas id="game" width="960" height="560"></canvas>
+
+    <div id="toolbar">
+      <div class="pick-wrap">
+        <button class="pick" data-type="bajia">八家將（$20）</button>
+        <img src="assets/units/八.png" alt="八家將" class="pick-img" />
+      </div>
+      <div class="pick-wrap">
+        <button class="pick" data-type="wugong">蜈蚣陣（$30）</button>
+        <img src="assets/units/蜈.png" alt="蜈蚣陣" class="pick-img" />
+      </div>
+      <div class="pick-wrap">
+        <button class="pick" data-type="baihe">白鶴陣（$15）</button>
+        <img src="assets/units/鶴.png" alt="白鶴陣" class="pick-img" />
+      </div>
+      <div class="pick-wrap">
+        <button class="pick" data-type="songjiang">宋江陣（$25）</button>
+        <img src="assets/units/宋.png" alt="宋江陣" class="pick-img" />
+      </div>
+      <div class="pick-wrap">
+        <button class="pick" data-type="jinshi">金獅陣（$28）</button>
+        <img src="assets/units/金.png" alt="金獅陣" class="pick-img" />
+      </div>
+      <span id="picked">目前：—</span>
+      <button id="helpBtn" class="secondary">？ 陣頭說明</button>
+    </div>
+
+    <div id="cover" class="overlay show">
+      <div class="panel">
+        <h2>守護鹿耳門聖母廟</h2>
+        <button id="startBtn">▶ 開始遊戲</button>
+      </div>
+    </div>
+
+    <div id="banner" class="overlay"></div>
+
+    <div id="upgradeCard" class="card hidden">
+      <div class="card-title">
+        <span id="upgName">—</span>
+        <span id="upgLevel" class="muted">Lv.1</span>
+      </div>
+      <div class="card-stats">
+        <div>攻擊 <b id="statAtk">0</b></div>
+        <div>攻速 <b id="statRate">0</b></div>
+        <div>射程 <b id="statRange">0</b></div>
+      </div>
+      <div class="card-buttons">
+        <button id="btnAtk">攻擊＋</button>
+        <button id="btnRate">攻速＋</button>
+        <button id="btnSkill">特技</button>
+      </div>
+      <div class="card-buttons">
+        <button id="btnSell" class="danger">售出</button>
+        <button id="btnClose" class="secondary">關閉</button>
+      </div>
+      <div id="upgHint" class="muted small"></div>
+    </div>
+
+    <div id="help" class="overlay">
+      <div class="panel">
+        <h3>陣頭文化小卡</h3>
+        <ul class="ul">
+          <li><b>八家將</b>：驅邪鎮煞，符令定身。</li>
+          <li><b>蜈蚣陣</b>：百足同動，連鎖彈跳。</li>
+          <li><b>白鶴陣</b>：輕靈迅捷，高速遠攻。</li>
+          <li><b>宋江陣</b>：列陣槍鋒，直線穿透。</li>
+          <li><b>金獅陣</b>：獅吼震波，範圍擊退燃燒。</li>
+        </ul>
+        <button id="helpClose">關閉</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <small>Canvas + 原生 JS | v4.4 特色化武器、三階升級、雙關卡、時間統計</small>
+  </footer>
+
+  <script src="game_v4_4.js"></script>
+</body>
+</html>
